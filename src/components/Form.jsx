@@ -1,62 +1,75 @@
-import { useState } from 'react';
+import { useState } from "react";
 
-function Form({ person, onFirst, onLast, onPhone, onEmail, onAddress }) {
+function Form({ handleBasicSubmit, handleEducationSubmit }) {
   return (
     <>
       <h1>Input field</h1>
-      <BasicInformation
-        person={person}
-        onFirst={onFirst}
-        onLast={onLast}
-        onPhone={onPhone}
-        onEmail={onEmail}
-        onAddress={onAddress}
-      />
+      <BasicInformation handleBasicSubmit={handleBasicSubmit} />
+      <Education handleEducationSubmit={handleEducationSubmit} />
     </>
   );
 }
 
-function BasicInformation({
-  person,
-  onFirst,
-  onLast,
-  onPhone,
-  onEmail,
-  onAddress,
-}) {
+function BasicInformation({ handleBasicSubmit }) {
   return (
     <div>
       <form
         onSubmit={(e) => {
-          e.preventDefault();
-          alert('submitting');
+          handleBasicSubmit(e);
         }}
       >
-        <label>
-          First name:
-          <input type='text' onChange={onFirst} />
+        <label htmlFor="name">
+          Full name:
+          <input type="text" id="name" />
         </label>
-        <label>
-          Last name:
-          <input type='text' onChange={onLast} />
-        </label>
-        <label>
+        <label htmlFor="phone-number">
           Phone number:
-          <input type='text' onChange={onPhone} />
+          <input type="text" id="phone-number" />
         </label>
-        <label>
+        <label htmlFor="email">
           Email address:
-          <input type='text' onChange={onEmail} />
+          <input type="text" id="email" />
         </label>
-        <label>
+        <label htmlFor="address">
           Address:
-          <input type='text' onChange={onAddress} />
+          <input type="text" id="address" />
         </label>
+        <button type="submit">submit</button>
       </form>
-      <p>
-        {person.firstName} {person.lastName} {person.phoneNumber}{' '}
-        {person.emailAddress} {person.address}
-      </p>
+    </div>
+  );
+}
+
+function Education({ handleEducationSubmit }) {
+  return (
+    <div>
+      <form
+        onSubmit={(e) => {
+          handleEducationSubmit(e);
+        }}
+      >
+        <label htmlFor="school-name">
+          School name:
+          <input type="text" id="school-name" />
+        </label>
+        <label htmlFor="degree">
+          Degree:
+          <input type="text" id="degree" />
+        </label>
+        <label htmlFor="start-date">
+          Start Date:
+          <input type="text" id="start-date" />
+        </label>
+        <label htmlFor="end-date">
+          End Date:
+          <input type="text" id="end-date" />
+        </label>
+        <label htmlFor="location">
+          Location:
+          <input type="text" id="location" />
+        </label>
+        <button type="submit">submit</button>
+      </form>
     </div>
   );
 }
