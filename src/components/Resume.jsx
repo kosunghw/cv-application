@@ -1,11 +1,12 @@
 import { useState } from "react";
+import "../styles/resume-style.css";
 
 function Resume({ person, education, experience }) {
   return (
     <div>
       <h1>Resume Field</h1>
       <h4>Basic Information</h4>
-      <h1>{person.fullName}</h1>
+      <h1 className="full-name">{person.fullName}</h1>
       <p>
         phone: {person.phoneNumber} email: {person.emailAddress} address:{" "}
         {person.address}
@@ -18,9 +19,12 @@ function Resume({ person, education, experience }) {
       </p>
       <h4>Experience</h4>
       <p>
-        Job Title: {experience.jobTitle} Company Name: {experience.companyName}{" "}
-        start date: {experience.startDate} end date: {experience.endDate}{" "}
-        location: {experience.location} Description: {experience.description}
+        Job Title: {experience.length > 0 && experience[0].jobTitle} Company
+        Name: {experience.length > 0 && experience[0].companyName} start date:{" "}
+        {experience.length > 0 && experience[0].startDate} end date:{" "}
+        {experience.length > 0 && experience[0].endDate} location:{" "}
+        {experience.length > 0 && experience[0].location} Description:{" "}
+        {experience.length > 0 && experience[0].description}
       </p>
     </div>
   );

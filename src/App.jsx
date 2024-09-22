@@ -19,16 +19,32 @@ function App() {
     location: "",
   });
 
-  const [experience, setExperience] = useState({
-    jobTitle: "",
-    companyName: "",
-    startDate: "",
-    endDate: "",
-    location: "",
-    description: "",
-  });
+  const [experience, setExperience] = useState([]);
+
+  const [showResume, setShowResume] = useState(false);
+
+  const [formIndex, setFormIndex] = useState(0);
 
   // const [skills, setSkills] = useState([]);
+
+  function onBasicNameInput(e) {
+    setPerson({ ...person, fullName: e.target.value });
+  }
+
+  function onBasicEmailInput(e) {
+    setPerson({ ...person, email: e.target.value });
+  }
+
+  function onBasicAddressInput(e) {
+    setPerson({ ...person, address: e.target.value });
+  }
+
+  function onBasicLinkedInInput(e) {
+    setPerson({ ...person, linkedIn: e.target.value });
+  }
+  function onBasicGithubInput(e) {
+    setPerson({ ...person, github: e.target.value });
+  }
 
   function handleBasicSubmit(e) {
     e.preventDefault();
@@ -62,19 +78,67 @@ function App() {
       startDate: document.getElementById("job-start-date").value,
       endDate: document.getElementById("job-end-date").value,
       location: document.getElementById("job-location").value,
-      description: document.getElementById("job-description"),
+      description: document.getElementById("job-description").value,
     };
-    setExperience(newObj);
+    setExperience([...experience, newObj]);
+  }
+
+  if (!showResume) {
+    return (
+      <>
+        <Form
+          handleBasicSubmit={handleBasicSubmit}
+          handleEducationSubmit={handleEducationSubmit}
+          handleExperienceSubmit={handleExperienceSubmit}
+          formIndex={formIndex}
+          setFormIndex={setFormIndex}
+          person={person}
+          onBasicNameInput={onBasicNameInput}
+          onBasicemailInput={onBasicEmailInput}
+          onBasicAddressInput={onBasicAddressInput}
+          onBasicLinkedInInput={onBasicLinkedInInput}
+          onBasicGithubInput={onBasicGithubInput}
+        />
+        <button
+          onClick={() => {
+            setShowResume(!showResume);
+          }}
+        >
+          Show Resume
+        </button>
+      </>
+    );
+  } else {
+    return (
+      <>
+        <Resume person={person} education={education} experience={experience} />
+        <button
+          onClick={() => {
+            setShowResume(!showResume);
+          }}
+        >
+          Show Form
+        </button>
+      </>
+    );
   }
 
   return (
     <>
       <h1>CV application</h1>
+
       <Form
         handleBasicSubmit={handleBasicSubmit}
         handleEducationSubmit={handleEducationSubmit}
         handleExperienceSubmit={handleExperienceSubmit}
       />
+      <button
+        onClick={() => {
+          setShowResume(!showResume);
+        }}
+      >
+        Show Resume
+      </button>
       <Resume person={person} education={education} experience={experience} />
     </>
   );

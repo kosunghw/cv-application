@@ -1,57 +1,134 @@
 import { useState } from "react";
+import "../styles/form-style.css";
 
 function Form({
   handleBasicSubmit,
   handleEducationSubmit,
   handleExperienceSubmit,
+  formIndex,
+  setFormIndex,
+  person,
+  onBasicNameInput,
+  onBasicEmailInput,
+  onBasicAddressInput,
+  onBasicLinkedInInput,
+  onBasicGithubInput,
 }) {
   return (
     <>
       <h1>Input field</h1>
-      <BasicInformation handleBasicSubmit={handleBasicSubmit} />
-      <Experience handleExperienceSubmit={handleExperienceSubmit} />
-      <Education handleEducationSubmit={handleEducationSubmit} />
+      {formIndex === 0 && (
+        <BasicInformation
+          handleBasicSubmit={handleBasicSubmit}
+          formIndex={formIndex}
+          setFormIndex={setFormIndex}
+          person={person}
+          onBasicNameInput={onBasicNameInput}
+          onBasicemailInput={onBasicEmailInput}
+          onBasicAddressInput={onBasicAddressInput}
+          onBasicLinkedInInput={onBasicLinkedInInput}
+          onBasicGithubInput={onBasicGithubInput}
+        />
+      )}
+      {formIndex === 1 && (
+        <Experience
+          handleExperienceSubmit={handleExperienceSubmit}
+          formIndex={formIndex}
+          setFormIndex={setFormIndex}
+        />
+      )}
+      {formIndex === 2 && (
+        <Education
+          handleEducationSubmit={handleEducationSubmit}
+          formIndex={formIndex}
+          setFormIndex={setFormIndex}
+        />
+      )}
     </>
   );
 }
 
-function BasicInformation({ handleBasicSubmit }) {
+function BasicInformation({
+  handleBasicSubmit,
+  formIndex,
+  setFormIndex,
+  person,
+  onBasicNameInput,
+  onBasicEmailInput,
+  onBasicAddressInput,
+  onBasicLinkedInInput,
+  onBasicGithubInput,
+}) {
   return (
     <div>
       <h4>Basic Information</h4>
       <form
         onSubmit={(e) => {
+          setFormIndex(++formIndex);
           handleBasicSubmit(e);
         }}
       >
         <label htmlFor="name">
           Full name:
-          <input type="text" id="name" />
+          <input
+            type="text"
+            id="name"
+            value={person.fullName}
+            onChange={onBasicNameInput}
+          />
         </label>
 
         <label htmlFor="email">
           Email address:
-          <input type="text" id="email" />
+          <input
+            type="text"
+            id="email"
+            value={person.email}
+            onChange={onBasicEmailInput}
+          />
         </label>
         <label htmlFor="address">
           Address:
-          <input type="text" id="address" />
+          <input
+            type="text"
+            id="address"
+            value={person.address}
+            onChange={onBasicAddressInput}
+          />
         </label>
         <label htmlFor="linkedIn">
           LinkedIn:
-          <input type="text" id="linkedIn" />
+          <input
+            type="text"
+            id="linkedIn"
+            value={person.linkedIn}
+            onChange={onBasicLinkedInInput}
+          />
         </label>
         <label htmlFor="github">
           Github:
-          <input type="text" id="github" />
+          <input
+            type="text"
+            id="github"
+            value={person.github}
+            onChange={onBasicGithubInput}
+          />
         </label>
         <button type="submit">submit</button>
       </form>
+      <button
+        onClick={(e) => {
+          setFormIndex(++formIndex);
+          handleBasicSubmit(e);
+        }}
+      >
+        Next
+      </button>
     </div>
   );
 }
 
-function Education({ handleEducationSubmit }) {
+function Education({ handleEducationSubmit, formIndex, setFormIndex }) {
   return (
     <div>
       <h4>Education</h4>
@@ -82,11 +159,18 @@ function Education({ handleEducationSubmit }) {
         </label>
         <button type="submit">submit</button>
       </form>
+      <button
+        onClick={() => {
+          setFormIndex(--formIndex);
+        }}
+      >
+        Prev
+      </button>
     </div>
   );
 }
 
-function Experience({ handleExperienceSubmit }) {
+function Experience({ handleExperienceSubmit, formIndex, setFormIndex }) {
   return (
     <div>
       <h4>Experience / Projects</h4>
@@ -121,6 +205,20 @@ function Experience({ handleExperienceSubmit }) {
         </label>
         <button type="submit">submit</button>
       </form>
+      <button
+        onClick={() => {
+          setFormIndex(--formIndex);
+        }}
+      >
+        Prev
+      </button>
+      <button
+        onClick={() => {
+          setFormIndex(++formIndex);
+        }}
+      >
+        Next
+      </button>
     </div>
   );
 }
