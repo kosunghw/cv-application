@@ -2,7 +2,6 @@ import { useState } from "react";
 import "../styles/form-style.css";
 
 function Form({
-  handleBasicSubmit,
   handleEducationSubmit,
   handleExperienceSubmit,
   formIndex,
@@ -19,7 +18,6 @@ function Form({
       <h1>Input field</h1>
       {formIndex === 0 && (
         <BasicInformation
-          handleBasicSubmit={handleBasicSubmit}
           formIndex={formIndex}
           setFormIndex={setFormIndex}
           person={person}
@@ -49,7 +47,6 @@ function Form({
 }
 
 function BasicInformation({
-  handleBasicSubmit,
   formIndex,
   setFormIndex,
   person,
@@ -62,12 +59,7 @@ function BasicInformation({
   return (
     <div>
       <h4>Basic Information</h4>
-      <form
-        onSubmit={(e) => {
-          setFormIndex(++formIndex);
-          handleBasicSubmit(e);
-        }}
-      >
+      <form>
         <label htmlFor="name">
           Full name:
           <input
@@ -114,12 +106,10 @@ function BasicInformation({
             onChange={onBasicGithubInput}
           />
         </label>
-        <button type="submit">submit</button>
       </form>
       <button
-        onClick={(e) => {
+        onClick={() => {
           setFormIndex(++formIndex);
-          handleBasicSubmit(e);
         }}
       >
         Next

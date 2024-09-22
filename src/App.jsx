@@ -46,18 +46,6 @@ function App() {
     setPerson({ ...person, github: e.target.value });
   }
 
-  function handleBasicSubmit(e) {
-    e.preventDefault();
-    const newObj = {
-      fullName: document.getElementById("name").value,
-      emailAddress: document.getElementById("email").value,
-      address: document.getElementById("address").value,
-      linkedIn: document.getElementById("linkedIn").value,
-      github: document.getElementById("github").value,
-    };
-    setPerson(newObj);
-  }
-
   function handleEducationSubmit(e) {
     e.preventDefault();
     const newObj = {
@@ -87,7 +75,6 @@ function App() {
     return (
       <>
         <Form
-          handleBasicSubmit={handleBasicSubmit}
           handleEducationSubmit={handleEducationSubmit}
           handleExperienceSubmit={handleExperienceSubmit}
           formIndex={formIndex}
