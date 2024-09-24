@@ -1,25 +1,26 @@
-import { useState } from "react";
-import Form from "./components/Form";
-import Resume from "./components/Resume";
+import { useState } from 'react';
+import Form from './components/Form';
+import Resume from './components/Resume';
 
 function App() {
   const [person, setPerson] = useState({
-    fullName: "",
-    emailAddress: "",
-    address: "",
-    linkedIn: "",
-    github: "",
+    fullName: '',
+    emailAddress: '',
+    address: '',
+    linkedIn: '',
+    github: '',
   });
 
   const [education, setEducation] = useState({
-    school: "",
-    degree: "",
-    startDate: "",
-    endDate: "",
-    location: "",
+    school: '',
+    degree: '',
+    startDate: '',
+    endDate: '',
+    location: '',
   });
 
   const [experience, setExperience] = useState([]);
+  const [experienceId, setExperienceId] = useState(0);
 
   const [showResume, setShowResume] = useState(false);
 
@@ -32,7 +33,7 @@ function App() {
   }
 
   function onBasicEmailInput(e) {
-    setPerson({ ...person, email: e.target.value });
+    setPerson({ ...person, emailAddress: e.target.value });
   }
 
   function onBasicAddressInput(e) {
@@ -49,11 +50,11 @@ function App() {
   function handleEducationSubmit(e) {
     e.preventDefault();
     const newObj = {
-      school: document.getElementById("name").value,
-      degree: document.getElementById("phone-number").value,
-      startDate: document.getElementById("start-date").value,
-      endDate: document.getElementById("end-date").value,
-      location: document.getElementById("location").value,
+      school: document.getElementById('name').value,
+      degree: document.getElementById('phone-number').value,
+      startDate: document.getElementById('start-date').value,
+      endDate: document.getElementById('end-date').value,
+      location: document.getElementById('location').value,
     };
     setEducation(newObj);
   }
@@ -61,14 +62,17 @@ function App() {
   function handleExperienceSubmit(e) {
     e.preventDefault();
     const newObj = {
-      jobTitle: document.getElementById("job-title").value,
-      companyName: document.getElementById("company-name").value,
-      startDate: document.getElementById("job-start-date").value,
-      endDate: document.getElementById("job-end-date").value,
-      location: document.getElementById("job-location").value,
-      description: document.getElementById("job-description").value,
+      jobTitle: document.getElementById('job-title').value,
+      companyName: document.getElementById('company-name').value,
+      startDate: document.getElementById('job-start-date').value,
+      endDate: document.getElementById('job-end-date').value,
+      location: document.getElementById('job-location').value,
+      description: document.getElementById('job-description').value,
+      experienceId: experienceId,
     };
     setExperience([...experience, newObj]);
+    setExperienceId(experienceId + 1);
+    e.target.reset();
   }
 
   if (!showResume) {
@@ -80,11 +84,13 @@ function App() {
           formIndex={formIndex}
           setFormIndex={setFormIndex}
           person={person}
-          onBasicNameInput={onBasicNameInput}
-          onBasicemailInput={onBasicEmailInput}
-          onBasicAddressInput={onBasicAddressInput}
-          onBasicLinkedInInput={onBasicLinkedInInput}
-          onBasicGithubInput={onBasicGithubInput}
+          experience={experience}
+          setExperience={setExperience}
+          onName={onBasicNameInput}
+          onEmail={onBasicEmailInput}
+          onAddress={onBasicAddressInput}
+          onLinkedIn={onBasicLinkedInInput}
+          onGithub={onBasicGithubInput}
         />
         <button
           onClick={() => {
