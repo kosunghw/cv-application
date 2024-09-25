@@ -11,13 +11,8 @@ function App() {
     github: '',
   });
 
-  const [education, setEducation] = useState({
-    school: '',
-    degree: '',
-    startDate: '',
-    endDate: '',
-    location: '',
-  });
+  const [education, setEducation] = useState([]);
+  const [eduId, setEduId] = useState(0);
 
   const [experience, setExperience] = useState([]);
   const [experienceId, setExperienceId] = useState(0);
@@ -50,13 +45,16 @@ function App() {
   function handleEducationSubmit(e) {
     e.preventDefault();
     const newObj = {
-      school: document.getElementById('name').value,
-      degree: document.getElementById('phone-number').value,
-      startDate: document.getElementById('start-date').value,
-      endDate: document.getElementById('end-date').value,
+      school: document.getElementById('school-name').value,
+      degree: document.getElementById('degree').value,
+      startDate: document.getElementById('edu-start-date').value,
+      endDate: document.getElementById('edu-end-date').value,
       location: document.getElementById('location').value,
+      eduId: eduId,
     };
-    setEducation(newObj);
+    setEducation([...education, newObj]);
+    setEduId(eduId + 1);
+    e.target.reset();
   }
 
   function handleExperienceSubmit(e) {
@@ -86,6 +84,8 @@ function App() {
           person={person}
           experience={experience}
           setExperience={setExperience}
+          education={education}
+          setEducation={setEducation}
           onName={onBasicNameInput}
           onEmail={onBasicEmailInput}
           onAddress={onBasicAddressInput}
@@ -115,26 +115,6 @@ function App() {
       </>
     );
   }
-
-  return (
-    <>
-      <h1>CV application</h1>
-
-      <Form
-        handleBasicSubmit={handleBasicSubmit}
-        handleEducationSubmit={handleEducationSubmit}
-        handleExperienceSubmit={handleExperienceSubmit}
-      />
-      <button
-        onClick={() => {
-          setShowResume(!showResume);
-        }}
-      >
-        Show Resume
-      </button>
-      <Resume person={person} education={education} experience={experience} />
-    </>
-  );
 }
 
 export default App;

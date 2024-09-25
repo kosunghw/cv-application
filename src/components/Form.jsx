@@ -9,6 +9,8 @@ function Form({
   person,
   experience,
   setExperience,
+  education,
+  setEducation,
   onName,
   onEmail,
   onAddress,
@@ -44,6 +46,8 @@ function Form({
           handleEducationSubmit={handleEducationSubmit}
           formIndex={formIndex}
           setFormIndex={setFormIndex}
+          educations={education}
+          setEducation={setEducation}
         />
       )}
     </>
@@ -122,7 +126,13 @@ function BasicInformation({
   );
 }
 
-function Education({ handleEducationSubmit, formIndex, setFormIndex }) {
+function Education({
+  handleEducationSubmit,
+  formIndex,
+  setFormIndex,
+  educations,
+  setEducation,
+}) {
   return (
     <div>
       <h4>Education</h4>
@@ -141,11 +151,11 @@ function Education({ handleEducationSubmit, formIndex, setFormIndex }) {
         </label>
         <label htmlFor='start-date'>
           Start Date:
-          <input type='text' id='start-date' />
+          <input type='text' id='edu-start-date' />
         </label>
         <label htmlFor='end-date'>
           End Date:
-          <input type='text' id='end-date' />
+          <input type='text' id='edu-end-date' />
         </label>
         <label htmlFor='location'>
           Location:
@@ -160,6 +170,22 @@ function Education({ handleEducationSubmit, formIndex, setFormIndex }) {
       >
         Prev
       </button>
+      <ul>
+        {educations.map((education) => (
+          <li key={education.eduId}>
+            {education.school}{' '}
+            <button
+              onClick={() => {
+                setEducation(
+                  educations.filter((a) => a.eduId !== education.eduId)
+                );
+              }}
+            >
+              Delete
+            </button>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

@@ -11,21 +11,39 @@ function Resume({ person, education, experience }) {
         phone: {person.phoneNumber} email: {person.emailAddress} address:{' '}
         {person.address} LinkedIn: {person.linkedIn} GitHub: {person.github}
       </p>
-      <h4>Education</h4>
-      <p>
-        school: {education.school} degree: {education.degree} start date:{' '}
-        {education.startDate} end date: {education.endDate} location:{' '}
-        {education.location}
-      </p>
       <h4>Experience</h4>
-      <p>
-        Job Title: {experience.length > 0 && experience[0].jobTitle} Company
-        Name: {experience.length > 0 && experience[0].companyName} start date:{' '}
-        {experience.length > 0 && experience[0].startDate} end date:{' '}
-        {experience.length > 0 && experience[0].endDate} location:{' '}
-        {experience.length > 0 && experience[0].location} Description:{' '}
-        {experience.length > 0 && experience[0].description}
-      </p>
+      <ul>
+        {experience.map((item) => {
+          return (
+            <>
+              <li key={item.experienceId}>
+                Job Title: {item.jobTitle}
+                Company Name: {item.companyName}
+                Start Date: {item.startDate}
+                End Date: {item.endDate}
+                Location: {item.location}
+                Description: {item.description}
+              </li>
+            </>
+          );
+        })}
+      </ul>
+      <h4>Education</h4>
+      <ul>
+        {education.map((item) => {
+          return (
+            <>
+              <li key={item.eduId}>
+                School: {item.school}
+                Degree: {item.degree}
+                Start Date: {item.startDate}
+                End Date: {item.endDate}
+                Location: {item.location}
+              </li>
+            </>
+          );
+        })}
+      </ul>
     </div>
   );
 }
