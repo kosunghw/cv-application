@@ -65,63 +65,66 @@ function BasicInformation({
   onGithub,
 }) {
   return (
-    <div>
-      <h4>Basic Information</h4>
-      <form>
-        <label htmlFor='name'>
-          Full name:
-          <input
-            type='text'
-            id='name'
-            value={person.fullName}
-            onChange={onName}
-          />
-        </label>
+    <div className='container'>
+      <div className='form-container'>
+        <form id='info-form'>
+          <h2>Basic Information</h2>
+          <label htmlFor='name'>
+            Full name
+            <input
+              type='text'
+              id='name'
+              value={person.fullName}
+              onChange={onName}
+            />
+          </label>
 
-        <label htmlFor='email'>
-          Email address:
-          <input
-            type='text'
-            id='email'
-            value={person.emailAddress}
-            onChange={onEmail}
-          />
-        </label>
-        <label htmlFor='address'>
-          Address:
-          <input
-            type='text'
-            id='address'
-            value={person.address}
-            onChange={onAddress}
-          />
-        </label>
-        <label htmlFor='linkedIn'>
-          LinkedIn:
-          <input
-            type='text'
-            id='linkedIn'
-            value={person.linkedIn}
-            onChange={onLinkedIn}
-          />
-        </label>
-        <label htmlFor='github'>
-          Github:
-          <input
-            type='text'
-            id='github'
-            value={person.github}
-            onChange={onGithub}
-          />
-        </label>
-      </form>
-      <button
-        onClick={() => {
-          setFormIndex(++formIndex);
-        }}
-      >
-        Next
-      </button>
+          <label htmlFor='email'>
+            Email address
+            <input
+              type='text'
+              id='email'
+              value={person.emailAddress}
+              onChange={onEmail}
+            />
+          </label>
+          <label htmlFor='address'>
+            Address
+            <input
+              type='text'
+              id='address'
+              value={person.address}
+              onChange={onAddress}
+            />
+          </label>
+          <label htmlFor='linkedIn'>
+            LinkedIn
+            <input
+              type='text'
+              id='linkedIn'
+              value={person.linkedIn}
+              onChange={onLinkedIn}
+            />
+          </label>
+          <label htmlFor='github'>
+            Github
+            <input
+              type='text'
+              id='github'
+              value={person.github}
+              onChange={onGithub}
+            />
+          </label>
+        </form>
+        <button
+          className='next-button'
+          onClick={() => {
+            setFormIndex(++formIndex);
+          }}
+        >
+          Next
+        </button>
+      </div>
     </div>
   );
 }
