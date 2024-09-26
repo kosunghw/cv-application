@@ -66,65 +66,63 @@ function BasicInformation({
 }) {
   return (
     <div className='container'>
-      <div className='form-container'>
-        <form id='info-form'>
-          <h2>Basic Information</h2>
-          <label htmlFor='name'>
-            Full name
-            <input
-              type='text'
-              id='name'
-              value={person.fullName}
-              onChange={onName}
-            />
-          </label>
+      <h2>General Information</h2>
+      <form id='info-form'>
+        <label htmlFor='name'>
+          Full name
+          <input
+            type='text'
+            id='name'
+            value={person.fullName}
+            onChange={onName}
+          />
+        </label>
 
-          <label htmlFor='email'>
-            Email address
-            <input
-              type='text'
-              id='email'
-              value={person.emailAddress}
-              onChange={onEmail}
-            />
-          </label>
-          <label htmlFor='address'>
-            Address
-            <input
-              type='text'
-              id='address'
-              value={person.address}
-              onChange={onAddress}
-            />
-          </label>
-          <label htmlFor='linkedIn'>
-            LinkedIn
-            <input
-              type='text'
-              id='linkedIn'
-              value={person.linkedIn}
-              onChange={onLinkedIn}
-            />
-          </label>
-          <label htmlFor='github'>
-            Github
-            <input
-              type='text'
-              id='github'
-              value={person.github}
-              onChange={onGithub}
-            />
-          </label>
-        </form>
-        <button
-          className='next-button'
-          onClick={() => {
-            setFormIndex(++formIndex);
-          }}
-        >
-          Next
-        </button>
-      </div>
+        <label htmlFor='email'>
+          Email address
+          <input
+            type='text'
+            id='email'
+            value={person.emailAddress}
+            onChange={onEmail}
+          />
+        </label>
+        <label htmlFor='address'>
+          Address
+          <input
+            type='text'
+            id='address'
+            value={person.address}
+            onChange={onAddress}
+          />
+        </label>
+        <label htmlFor='linkedIn'>
+          LinkedIn
+          <input
+            type='text'
+            id='linkedIn'
+            value={person.linkedIn}
+            onChange={onLinkedIn}
+          />
+        </label>
+        <label htmlFor='github'>
+          GitHub
+          <input
+            type='text'
+            id='github'
+            value={person.github}
+            onChange={onGithub}
+          />
+        </label>
+      </form>
+      <button
+        className='next-button'
+        onClick={() => {
+          setFormIndex(++formIndex);
+        }}
+      >
+        Next
+      </button>
     </div>
   );
 }
@@ -216,11 +214,11 @@ function Experience({
           Company Name:
           <input type='text' id='company-name' />
         </label>
-        <label htmlFor='start-date'>
+        <label htmlFor='job-start-date'>
           Start Date:
           <input type='text' id='job-start-date' />
         </label>
-        <label htmlFor='end-date'>
+        <label htmlFor='job-end-date'>
           End Date:
           <input type='text' id='job-end-date' />
         </label>
@@ -228,9 +226,9 @@ function Experience({
           Location:
           <input type='text' id='job-location' />
         </label>
-        <label htmlFor='description'>
+        <label htmlFor='job-description'>
           Description:
-          <input type='text' id='job-description' />
+          <textarea name='job-description' id='job-description'></textarea>
         </label>
         <button type='submit'>submit</button>
       </form>
