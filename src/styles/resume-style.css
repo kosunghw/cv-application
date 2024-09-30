@@ -38,5 +38,43 @@
   font-size: 1.3rem;
   color: rgb(199, 199, 255);
   border-bottom: 2px solid rgb(199, 199, 255);
-  padding-bottom: 5px;
+  padding-bottom: 7px;
+}
+
+ul.list {
+  margin-top: 7px;
+}
+
+li.experience-list-item {
+  list-style: none;
+  margin-bottom: 15px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+
+.experience-title {
+  grid-column: 1/2;
+  font-weight: bold;
+}
+
+.experience-name {
+  grid-column: 2/3;
+  font-weight: bold;
+  font-size: 1.2rem;
+  justify-self: center;
+}
+
+.experience-location {
+  grid-column: 2/3;
+  justify-self: center;
+}
+
+.experience-description {
+  grid-row: 3/4;
+  grid-column: 1/4;
+}
+
+.experience-date {
+  justify-self: end;
 }

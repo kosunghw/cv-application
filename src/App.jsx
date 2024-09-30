@@ -68,6 +68,7 @@ function App() {
       description: document.getElementById('job-description').value,
       experienceId: experienceId,
     };
+    newObj['date'] = `${newObj.startDate} - ${newObj.endDate}`;
     setExperience([...experience, newObj]);
     setExperienceId(experienceId + 1);
     e.target.reset();

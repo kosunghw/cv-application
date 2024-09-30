@@ -12,29 +12,30 @@ function Resume({ person, education, experience }) {
             <div>{person.address}</div>
             <div>
               <a href={'https://' + person.linkedIn} target='_blank'>
-                {person.linkedIn}
+                LinkedIn
               </a>
             </div>
             <div>
-              <a href={person.github} target='_blank'>
-                {person.github}
+              <a href={'https://' + person.github} target='_blank'>
+                GitHub
               </a>
             </div>
           </div>
         </div>
         <div className='experience'>
           <div className='section'>Experience</div>
-          <ul>
+          <ul className='list'>
             {experience.map((item) => {
               return (
                 <>
-                  <li key={item.experienceId}>
-                    Job Title: {item.jobTitle}
-                    Company Name: {item.companyName}
-                    Start Date: {item.startDate}
-                    End Date: {item.endDate}
-                    Location: {item.location}
-                    Description: {item.description}
+                  <li className='experience-list-item' key={item.experienceId}>
+                    <div className='experience-title'>{item.jobTitle}</div>
+                    <div className='experience-name'>{item.companyName}</div>
+                    <div className='experience-date'>{item.date}</div>
+                    <div className='experience-location'>{item.location}</div>
+                    <div className='experience-description'>
+                      {item.description}
+                    </div>
                   </li>
                 </>
               );
@@ -43,11 +44,11 @@ function Resume({ person, education, experience }) {
         </div>
         <div className='education'>
           <div className='section'>Education</div>
-          <ul>
+          <ul className='list'>
             {education.map((item) => {
               return (
                 <>
-                  <li key={item.eduId}>
+                  <li className='list-item' key={item.eduId}>
                     School: {item.school}
                     Degree: {item.degree}
                     Start Date: {item.startDate}
