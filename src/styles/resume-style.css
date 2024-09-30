@@ -15,10 +15,10 @@
   display: flex;
   flex-direction: column;
   gap: 30px;
+  border: 1px solid black;
 }
 
 .resume-top {
-  background-color: rgb(199, 199, 255);
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -31,22 +31,20 @@
   gap: 20px;
 }
 
-.experience {
-}
-
 .section {
   font-size: 1.3rem;
   color: rgb(199, 199, 255);
   border-bottom: 2px solid rgb(199, 199, 255);
   padding-bottom: 7px;
+  padding-left: 10px;
 }
 
 ul.list {
   margin-top: 7px;
+  padding: 0 15px 0 10px;
 }
 
 li.experience-list-item {
-  list-style: none;
   margin-bottom: 15px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -73,8 +71,28 @@ li.experience-list-item {
 .experience-description {
   grid-row: 3/4;
   grid-column: 1/4;
+  margin-top: 5px;
+  padding-left: 2.5rem;
 }
 
 .experience-date {
   justify-self: end;
+  font-weight: bold;
+}
+
+span.edu-degree {
+  font-weight: bold;
+}
+
+span.edu-school {
+  font-weight: bold;
+}
+
+.edu-list-item {
+  list-style: inside;
+  padding-left: 2.5rem;
+}
+
+.edu-date {
+  float: right;
 }

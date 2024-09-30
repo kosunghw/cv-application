@@ -52,6 +52,7 @@ function App() {
       location: document.getElementById('location').value,
       eduId: eduId,
     };
+    newObj['date'] = `${newObj.startDate} - ${newObj.endDate}`;
     setEducation([...education, newObj]);
     setEduId(eduId + 1);
     e.target.reset();

@@ -48,12 +48,11 @@ function Resume({ person, education, experience }) {
             {education.map((item) => {
               return (
                 <>
-                  <li className='list-item' key={item.eduId}>
-                    School: {item.school}
-                    Degree: {item.degree}
-                    Start Date: {item.startDate}
-                    End Date: {item.endDate}
-                    Location: {item.location}
+                  <li className='edu-list-item' key={item.eduId}>
+                    <span className='edu-degree'>{item.degree} | </span>
+                    <span className='edu-school'> {item.school} | </span>
+                    <span className='edu-location'> {item.location}</span>
+                    <span className='edu-date'>{item.date}</span>
                   </li>
                 </>
               );
