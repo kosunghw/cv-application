@@ -1,3 +1,8 @@
+.form-section {
+  display: flex;
+  justify-content: center;
+}
+
 .container {
   display: flex;
   flex-direction: column;
@@ -8,15 +13,20 @@
   border: 1px solid #000;
 }
 
-.container #info-form {
+.container #info-form,
+.container #ex-form,
+.container #edu-form {
   padding: 20px;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  flex-direction: column;
   gap: 10px;
   height: 400px;
   width: 500px;
   border: 1px solid red;
+}
+
+.container #ex-form {
+  height: 450px;
 }
 
 label {
@@ -35,8 +45,34 @@ h2 {
   text-align: center;
 }
 
-button.next-button {
-  /* align-self: flex-end; */
-  width: 4rem;
+.button-container {
+  padding: 0 25px 0 25px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+button.next-button,
+button.prev-button {
+  width: 5rem;
   height: 25px;
+  border-radius: 10px;
+  border: none;
+  background-color: darkgray;
+}
+
+#edu-form ~ .prev-button {
+  align-self: flex-start;
+  margin-left: 25px;
+}
+
+#info-form + .next-button {
+  align-self: flex-end;
+  margin-right: 25px;
+}
+
+button.next-button:hover,
+button.prev-button:hover {
+  background-color: rgb(196, 196, 196);
+  cursor: pointer;
 }

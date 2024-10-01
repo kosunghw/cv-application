@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import '../styles/form-style.css';
+import { useState } from "react";
+import "../styles/form-style.css";
 
 function Form({
   handleEducationSubmit,
@@ -18,8 +18,7 @@ function Form({
   onGithub,
 }) {
   return (
-    <>
-      <h1>Input field</h1>
+    <div className="form-section">
       {formIndex === 0 && (
         <BasicInformation
           formIndex={formIndex}
@@ -50,7 +49,7 @@ function Form({
           setEducation={setEducation}
         />
       )}
-    </>
+    </div>
   );
 }
 
@@ -65,58 +64,58 @@ function BasicInformation({
   onGithub,
 }) {
   return (
-    <div className='container'>
+    <div className="container">
       <h2>General Information</h2>
-      <form id='info-form'>
-        <label htmlFor='name'>
+      <form id="info-form">
+        <label htmlFor="name">
           Full name
           <input
-            type='text'
-            id='name'
+            type="text"
+            id="name"
             value={person.fullName}
             onChange={onName}
           />
         </label>
 
-        <label htmlFor='email'>
+        <label htmlFor="email">
           Email address
           <input
-            type='text'
-            id='email'
+            type="text"
+            id="email"
             value={person.emailAddress}
             onChange={onEmail}
           />
         </label>
-        <label htmlFor='address'>
+        <label htmlFor="address">
           Address
           <input
-            type='text'
-            id='address'
+            type="text"
+            id="address"
             value={person.address}
             onChange={onAddress}
           />
         </label>
-        <label htmlFor='linkedIn'>
+        <label htmlFor="linkedIn">
           LinkedIn
           <input
-            type='text'
-            id='linkedIn'
+            type="text"
+            id="linkedIn"
             value={person.linkedIn}
             onChange={onLinkedIn}
           />
         </label>
-        <label htmlFor='github'>
+        <label htmlFor="github">
           GitHub
           <input
-            type='text'
-            id='github'
+            type="text"
+            id="github"
             value={person.github}
             onChange={onGithub}
           />
         </label>
       </form>
       <button
-        className='next-button'
+        className="next-button"
         onClick={() => {
           setFormIndex(++formIndex);
         }}
@@ -135,46 +134,40 @@ function Education({
   setEducation,
 }) {
   return (
-    <div>
-      <h4>Education</h4>
+    <div className="container">
+      <h2>Education</h2>
       <form
+        id="edu-form"
         onSubmit={(e) => {
           handleEducationSubmit(e);
         }}
       >
-        <label htmlFor='school-name'>
+        <label htmlFor="school-name">
           School name:
-          <input type='text' id='school-name' />
+          <input type="text" id="school-name" />
         </label>
-        <label htmlFor='degree'>
+        <label htmlFor="degree">
           Degree:
-          <input type='text' id='degree' />
+          <input type="text" id="degree" />
         </label>
-        <label htmlFor='start-date'>
+        <label htmlFor="start-date">
           Start Date:
-          <input type='text' id='edu-start-date' />
+          <input type="text" id="edu-start-date" />
         </label>
-        <label htmlFor='end-date'>
+        <label htmlFor="end-date">
           End Date:
-          <input type='text' id='edu-end-date' />
+          <input type="text" id="edu-end-date" />
         </label>
-        <label htmlFor='location'>
+        <label htmlFor="location">
           Location:
-          <input type='text' id='location' />
+          <input type="text" id="location" />
         </label>
-        <button type='submit'>submit</button>
+        <button type="submit">submit</button>
       </form>
-      <button
-        onClick={() => {
-          setFormIndex(--formIndex);
-        }}
-      >
-        Prev
-      </button>
       <ul>
         {educations.map((education) => (
           <li key={education.eduId}>
-            {education.school}{' '}
+            {education.school}{" "}
             <button
               onClick={() => {
                 setEducation(
@@ -187,6 +180,14 @@ function Education({
           </li>
         ))}
       </ul>
+      <button
+        className="prev-button"
+        onClick={() => {
+          setFormIndex(--formIndex);
+        }}
+      >
+        Prev
+      </button>
     </div>
   );
 }
@@ -199,43 +200,44 @@ function Experience({
   setExperience,
 }) {
   return (
-    <div>
-      <h4>Experience / Projects</h4>
+    <div className="container">
+      <h2>Experience / Projects</h2>
       <form
+        id="ex-form"
         onSubmit={(e) => {
           handleExperienceSubmit(e);
         }}
       >
-        <label htmlFor='job-title'>
+        <label htmlFor="job-title">
           Job Title:
-          <input type='text' id='job-title' />
+          <input type="text" id="job-title" />
         </label>
-        <label htmlFor='company-name'>
+        <label htmlFor="company-name">
           Company Name:
-          <input type='text' id='company-name' />
+          <input type="text" id="company-name" />
         </label>
-        <label htmlFor='job-start-date'>
+        <label htmlFor="job-start-date">
           Start Date:
-          <input type='text' id='job-start-date' />
+          <input type="text" id="job-start-date" />
         </label>
-        <label htmlFor='job-end-date'>
+        <label htmlFor="job-end-date">
           End Date:
-          <input type='text' id='job-end-date' />
+          <input type="text" id="job-end-date" />
         </label>
-        <label htmlFor='job-location'>
+        <label htmlFor="job-location">
           Location:
-          <input type='text' id='job-location' />
+          <input type="text" id="job-location" />
         </label>
-        <label htmlFor='job-description'>
+        <label htmlFor="job-description">
           Description:
-          <textarea name='job-description' id='job-description'></textarea>
+          <textarea name="job-description" id="job-description"></textarea>
         </label>
-        <button type='submit'>submit</button>
+        <button type="submit">submit</button>
       </form>
       <ul>
         {experiences.map((experience) => (
           <li key={experience.experienceId}>
-            {experience.companyName}{' '}
+            {experience.companyName}{" "}
             <button
               onClick={() => {
                 setExperience(
@@ -250,20 +252,24 @@ function Experience({
           </li>
         ))}
       </ul>
-      <button
-        onClick={() => {
-          setFormIndex(--formIndex);
-        }}
-      >
-        Prev
-      </button>
-      <button
-        onClick={() => {
-          setFormIndex(++formIndex);
-        }}
-      >
-        Next
-      </button>
+      <div className="button-container">
+        <button
+          className="prev-button"
+          onClick={() => {
+            setFormIndex(--formIndex);
+          }}
+        >
+          Prev
+        </button>
+        <button
+          className="next-button"
+          onClick={() => {
+            setFormIndex(++formIndex);
+          }}
+        >
+          Next
+        </button>
+      </div>
     </div>
   );
 }
