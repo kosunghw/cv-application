@@ -1,21 +1,28 @@
+* {
+  --dark-grey: #6c757d;
+  --darker-grey: #343a40;
+  --black: #212529;
+  --grey: #dee2e6;
+  --lighter-grey: #e9ecef;
+  --white: #f8f9fa;
+}
+
 .full-name {
   text-align: center;
 }
 
-.flex-container {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
 .resume-container {
+  flex-shrink: 0;
+  flex-grow: 0;
   height: 29.7cm;
   width: 21cm;
   margin-top: 30px;
+  margin-bottom: 20px;
   display: flex;
   flex-direction: column;
   gap: 30px;
-  border: 1px solid black;
+  background-color: var(--main-text-color);
+  /* outline: 10px solid var(--sage); */
 }
 
 .resume-top {
@@ -33,8 +40,9 @@
 
 .section {
   font-size: 1.3rem;
-  color: rgb(199, 199, 255);
-  border-bottom: 2px solid rgb(199, 199, 255);
+  color: var(--sage);
+  font-weight: bold;
+  border-bottom: 3px solid var(--sage);
   padding-bottom: 7px;
   padding-left: 10px;
 }
@@ -45,10 +53,14 @@ ul.list {
 }
 
 li.experience-list-item {
-  margin-bottom: 15px;
+  margin-bottom: 30px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-rows: 25px 25px 1fr;
+}
+
+li.experience-list-item:last-child {
+  margin-bottom: 0;
 }
 
 .experience-title {
@@ -73,6 +85,7 @@ li.experience-list-item {
   grid-column: 1/4;
   margin-top: 5px;
   padding-left: 2.5rem;
+  line-height: 1.2;
 }
 
 .experience-date {

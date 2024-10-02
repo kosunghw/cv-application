@@ -77,7 +77,15 @@ function App() {
 
   if (!showResume) {
     return (
-      <>
+      <div className='body'>
+        <button
+          className='show'
+          onClick={() => {
+            setShowResume(!showResume);
+          }}
+        >
+          Show Resume
+        </button>
         <Form
           handleEducationSubmit={handleEducationSubmit}
           handleExperienceSubmit={handleExperienceSubmit}
@@ -94,27 +102,21 @@ function App() {
           onLinkedIn={onBasicLinkedInInput}
           onGithub={onBasicGithubInput}
         />
-        <button
-          onClick={() => {
-            setShowResume(!showResume);
-          }}
-        >
-          Show Resume
-        </button>
-      </>
+      </div>
     );
   } else {
     return (
-      <>
-        <Resume person={person} education={education} experience={experience} />
+      <div className='body'>
         <button
+          className='show'
           onClick={() => {
             setShowResume(!showResume);
           }}
         >
           Show Form
         </button>
-      </>
+        <Resume person={person} education={education} experience={experience} />
+      </div>
     );
   }
 }

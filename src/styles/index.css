@@ -5,8 +5,38 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  --black: #363438;
+  --grey: #8d8c8a;
+  --white: #f6f6f6;
+  --blue: #52d6f4;
 }
 
 #root {
-  height: 100vh;
+  /* height: 100vh; */
+  background-color: var(--black);
+}
+
+div.body {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+button.show {
+  background-color: var(--blue);
+  color: var(--black);
+  border: none;
+  border-radius: 10px;
+  align-self: center;
+  width: 100px;
+  height: 50px;
+  position: absolute;
+  top: 150px;
+  left: 50px;
+}
+
+button.show:hover {
+  background-color: var(--white);
+  cursor: pointer;
 }

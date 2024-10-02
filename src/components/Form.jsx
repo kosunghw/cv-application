@@ -1,5 +1,5 @@
-import { useState } from "react";
-import "../styles/form-style.css";
+import { useState } from 'react';
+import '../styles/form-style.css';
 
 function Form({
   handleEducationSubmit,
@@ -18,7 +18,7 @@ function Form({
   onGithub,
 }) {
   return (
-    <div className="form-section">
+    <div className='form-section'>
       {formIndex === 0 && (
         <BasicInformation
           formIndex={formIndex}
@@ -64,58 +64,68 @@ function BasicInformation({
   onGithub,
 }) {
   return (
-    <div className="container">
+    <div className='container'>
       <h2>General Information</h2>
-      <form id="info-form">
-        <label htmlFor="name">
+      <form id='info-form'>
+        <label htmlFor='name'>
           Full name
           <input
-            type="text"
-            id="name"
+            type='text'
+            id='name'
+            placeholder='John Doe'
             value={person.fullName}
             onChange={onName}
           />
         </label>
 
-        <label htmlFor="email">
+        <label htmlFor='email'>
           Email address
           <input
-            type="text"
-            id="email"
+            type='text'
+            id='email'
+            placeholder='johndoe@example.com'
             value={person.emailAddress}
             onChange={onEmail}
           />
         </label>
-        <label htmlFor="address">
+        <label htmlFor='address'>
           Address
           <input
-            type="text"
-            id="address"
+            type='text'
+            id='address'
+            placeholder='City, Province'
             value={person.address}
             onChange={onAddress}
           />
         </label>
-        <label htmlFor="linkedIn">
-          LinkedIn
+        <label htmlFor='linkedIn'>
+          <div>
+            LinkedIn <span className='optional'>recommended</span>
+          </div>
+
           <input
-            type="text"
-            id="linkedIn"
+            type='text'
+            id='linkedIn'
+            placeholder='https://www.linkedin.com/user-name'
             value={person.linkedIn}
             onChange={onLinkedIn}
           />
         </label>
-        <label htmlFor="github">
-          GitHub
+        <label htmlFor='github'>
+          <div>
+            GitHub <span className='optional'>recommended</span>
+          </div>
           <input
-            type="text"
-            id="github"
+            type='text'
+            id='github'
+            placeholder='https://github.com/user-name'
             value={person.github}
             onChange={onGithub}
           />
         </label>
       </form>
       <button
-        className="next-button"
+        className='next-button'
         onClick={() => {
           setFormIndex(++formIndex);
         }}
@@ -134,54 +144,59 @@ function Education({
   setEducation,
 }) {
   return (
-    <div className="container">
+    <div className='container'>
       <h2>Education</h2>
       <form
-        id="edu-form"
+        id='edu-form'
         onSubmit={(e) => {
           handleEducationSubmit(e);
         }}
       >
-        <label htmlFor="school-name">
-          School name:
-          <input type="text" id="school-name" />
+        <label htmlFor='school-name'>
+          School name
+          <input type='text' id='school-name' placeholder='Odin University' />
         </label>
-        <label htmlFor="degree">
-          Degree:
-          <input type="text" id="degree" />
+        <label htmlFor='degree'>
+          Degree
+          <input type='text' id='degree' placeholder='Bachelor of React' />
         </label>
-        <label htmlFor="start-date">
-          Start Date:
-          <input type="text" id="edu-start-date" />
+        <label htmlFor='start-date'>
+          Start Date
+          <input type='text' id='edu-start-date' placeholder='Jul 2024' />
         </label>
-        <label htmlFor="end-date">
-          End Date:
-          <input type="text" id="edu-end-date" />
+        <label htmlFor='end-date'>
+          End Date
+          <input type='text' id='edu-end-date' placeholder='Oct 2024' />
         </label>
-        <label htmlFor="location">
-          Location:
-          <input type="text" id="location" />
+        <label htmlFor='location'>
+          <div>
+            Location <span className='optional'>optional</span>
+          </div>
+          <input type='text' id='location' placeholder='City, Province' />
         </label>
-        <button type="submit">submit</button>
+        <button className='submit' type='submit'>
+          submit
+        </button>
       </form>
       <ul>
         {educations.map((education) => (
-          <li key={education.eduId}>
-            {education.school}{" "}
+          <li className='form-list' key={education.eduId}>
+            {education.school}{' '}
             <button
+              className='delete'
               onClick={() => {
                 setEducation(
                   educations.filter((a) => a.eduId !== education.eduId)
                 );
               }}
             >
-              Delete
+              X
             </button>
           </li>
         ))}
       </ul>
       <button
-        className="prev-button"
+        className='prev-button'
         onClick={() => {
           setFormIndex(--formIndex);
         }}
@@ -200,45 +215,61 @@ function Experience({
   setExperience,
 }) {
   return (
-    <div className="container">
+    <div className='container'>
       <h2>Experience / Projects</h2>
       <form
-        id="ex-form"
+        id='ex-form'
         onSubmit={(e) => {
           handleExperienceSubmit(e);
         }}
       >
-        <label htmlFor="job-title">
-          Job Title:
-          <input type="text" id="job-title" />
+        <label htmlFor='job-title'>
+          Role
+          <input
+            type='text'
+            id='job-title'
+            placeholder='Full Stack Developer'
+          />
         </label>
-        <label htmlFor="company-name">
-          Company Name:
-          <input type="text" id="company-name" />
+        <label htmlFor='company-name'>
+          Company / Project
+          <input type='text' id='company-name' placeholder='The Odin Project' />
         </label>
-        <label htmlFor="job-start-date">
-          Start Date:
-          <input type="text" id="job-start-date" />
+        <label htmlFor='job-start-date'>
+          Start Date
+          <input type='text' id='job-start-date' placeholder='2020' />
         </label>
-        <label htmlFor="job-end-date">
-          End Date:
-          <input type="text" id="job-end-date" />
+        <label htmlFor='job-end-date'>
+          End Date
+          <input type='text' id='job-end-date' placeholder='2024' />
         </label>
-        <label htmlFor="job-location">
-          Location:
-          <input type="text" id="job-location" />
+        <label htmlFor='job-location'>
+          <div>
+            Location <span className='optional'>optional</span>
+          </div>
+          <input type='text' id='job-location' placeholder='City, Province' />
         </label>
-        <label htmlFor="job-description">
-          Description:
-          <textarea name="job-description" id="job-description"></textarea>
+        <label htmlFor='job-description'>
+          <div>
+            Description <span className='optional'>recommended</span>
+          </div>
+          <textarea
+            name='job-description'
+            id='job-description'
+            placeholder='Describe your experience'
+            rows='5'
+          ></textarea>
         </label>
-        <button type="submit">submit</button>
+        <button className='submit' type='submit'>
+          submit
+        </button>
       </form>
       <ul>
         {experiences.map((experience) => (
-          <li key={experience.experienceId}>
-            {experience.companyName}{" "}
+          <li className='form-list' key={experience.experienceId}>
+            {experience.companyName}{' '}
             <button
+              className='delete'
               onClick={() => {
                 setExperience(
                   experiences.filter(
@@ -247,14 +278,14 @@ function Experience({
                 );
               }}
             >
-              Delete
+              X
             </button>
           </li>
         ))}
       </ul>
-      <div className="button-container">
+      <div className='button-container'>
         <button
-          className="prev-button"
+          className='prev-button'
           onClick={() => {
             setFormIndex(--formIndex);
           }}
@@ -262,7 +293,7 @@ function Experience({
           Prev
         </button>
         <button
-          className="next-button"
+          className='next-button'
           onClick={() => {
             setFormIndex(++formIndex);
           }}
