@@ -3,12 +3,14 @@
   --grey: #8d8c8a;
   --white: #f6f6f6;
   --hover: #3b393d;
+  --blue: #52d6f4;
 }
 
 .form-section {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
+  margin-bottom: 50px;
 }
 
 .container {
@@ -19,9 +21,17 @@
   padding: 20px;
   width: 600px;
   gap: 20px;
-  background-color: var(--grey);
+  background-image: linear-gradient(
+    to left bottom,
+    #f6f6f6,
+    #dbdadb,
+    #c1bfbf,
+    #a7a5a4,
+    #8d8c8a
+  );
   color: var(--black);
   border-radius: 10px;
+  position: relative;
 }
 
 .container #info-form,
@@ -31,7 +41,6 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  height: 500px;
   width: 500px;
   border-radius: 10px;
 }
@@ -58,13 +67,6 @@ h2 {
   text-align: center;
 }
 
-.button-container {
-  padding: 0 25px 0 25px;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-}
-
 button {
   background-color: var(--black);
   color: var(--white);
@@ -78,34 +80,45 @@ button:hover {
 button.next-button,
 button.prev-button {
   width: 5rem;
-  height: 25px;
-  border-radius: 10px;
+  height: 2rem;
+  border-radius: 15px;
+  font-size: 0.97rem;
   border: none;
+  background-color: var(--blue);
+  color: var(--black);
+  box-shadow: 10px 10px 14px 1px rgba(00, 00, 00, 0.2);
 }
 
-#edu-form ~ .prev-button {
-  align-self: flex-start;
-  margin-left: 25px;
+button.prev-button:hover,
+button.next-button:hover {
+  box-shadow: none;
 }
 
-#info-form + .next-button {
-  align-self: flex-end;
-  margin-right: 25px;
+button.prev-button {
+  position: absolute;
+  bottom: -40px;
+  left: 0;
+}
+
+button.next-button {
+  position: absolute;
+  bottom: -40px;
+  right: 0;
 }
 
 span.optional {
   font-size: 0.8rem;
-  color: var(--ivory);
+  color: var(--blue);
 }
 
 button.submit {
   margin-top: 20px;
   align-self: flex-end;
   border: none;
-  width: 5rem;
-  height: 25px;
-  border-radius: 10px;
-  font-size: 1.1rem;
+  width: 6rem;
+  height: 1.9rem;
+  border-radius: 15px;
+  font-size: 0.97rem;
 }
 
 button.delete {
@@ -115,6 +128,20 @@ button.delete {
   height: 1.2rem;
 }
 
+ul.form-ul {
+  align-self: flex-start;
+}
+
 li.form-list {
-  list-style: none;
+  list-style: circle inside;
+  margin-bottom: 5px;
+  margin-left: 60px;
+}
+
+li.form-list:last-child {
+  margin-bottom: 0;
+}
+
+.fade {
+  transition: all 0.5s;
 }

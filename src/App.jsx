@@ -79,7 +79,7 @@ function App() {
     return (
       <div className='body'>
         <button
-          className='show'
+          className='show fade'
           onClick={() => {
             setShowResume(!showResume);
           }}
@@ -108,7 +108,7 @@ function App() {
     return (
       <div className='body'>
         <button
-          className='show'
+          className='show fade'
           onClick={() => {
             setShowResume(!showResume);
           }}

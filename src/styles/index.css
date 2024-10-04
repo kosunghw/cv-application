@@ -1,5 +1,6 @@
 @import url('form-style.css');
 @import url('resume-style.css');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@100;400;700&display=swap');
 
 * {
   margin: 0;
@@ -9,11 +10,20 @@
   --grey: #8d8c8a;
   --white: #f6f6f6;
   --blue: #52d6f4;
+  --blue-hover: #64e3ff;
 }
 
 #root {
   /* height: 100vh; */
-  background-color: var(--black);
+  background-image: radial-gradient(
+    circle,
+    #363438,
+    #4d484a,
+    #625e5e,
+    #787473,
+    #8d8c8a
+  );
+  font-family: 'Fira Sans', sans-serif;
 }
 
 div.body {
@@ -23,20 +33,43 @@ div.body {
   position: relative;
 }
 
+button {
+  font-family: 'Fira Sans', sans-serif;
+}
+
 button.show {
-  background-color: var(--blue);
+  background-image: radial-gradient(
+    circle,
+    #52d6f4,
+    #56d7f4,
+    #5ad8f5,
+    #5dd9f5,
+    #61daf6,
+    #64dbf6,
+    #66dcf7,
+    #69ddf7,
+    #6cdef7,
+    #6fdff8,
+    #72e0f8,
+    #75e1f9
+  );
+  box-shadow: 10px 10px 14px 1px rgba(00, 00, 00, 0.2);
   color: var(--black);
   border: none;
-  border-radius: 10px;
+  border-radius: 25px;
   align-self: center;
-  width: 100px;
-  height: 50px;
+  width: 8rem;
+  height: 3rem;
   position: absolute;
   top: 150px;
   left: 50px;
 }
 
 button.show:hover {
-  background-color: var(--white);
+  box-shadow: none;
   cursor: pointer;
+}
+
+.fade {
+  transition: all 0.5s;
 }

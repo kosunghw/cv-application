@@ -125,7 +125,7 @@ function BasicInformation({
         </label>
       </form>
       <button
-        className='next-button'
+        className='next-button fade'
         onClick={() => {
           setFormIndex(++formIndex);
         }}
@@ -178,7 +178,7 @@ function Education({
           submit
         </button>
       </form>
-      <ul>
+      <ul className='form-ul'>
         {educations.map((education) => (
           <li className='form-list' key={education.eduId}>
             {education.school}{' '}
@@ -196,7 +196,7 @@ function Education({
         ))}
       </ul>
       <button
-        className='prev-button'
+        className='prev-button fade'
         onClick={() => {
           setFormIndex(--formIndex);
         }}
@@ -264,7 +264,7 @@ function Experience({
           submit
         </button>
       </form>
-      <ul>
+      <ul className='form-ul'>
         {experiences.map((experience) => (
           <li className='form-list' key={experience.experienceId}>
             {experience.companyName}{' '}
@@ -285,7 +285,7 @@ function Experience({
       </ul>
       <div className='button-container'>
         <button
-          className='prev-button'
+          className='prev-button fade'
           onClick={() => {
             setFormIndex(--formIndex);
           }}
@@ -293,7 +293,7 @@ function Experience({
           Prev
         </button>
         <button
-          className='next-button'
+          className='next-button fade'
           onClick={() => {
             setFormIndex(++formIndex);
           }}
