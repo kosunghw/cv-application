@@ -96,13 +96,13 @@ button.next-button:hover {
 
 button.prev-button {
   position: absolute;
-  bottom: -40px;
+  bottom: -50px;
   left: 0;
 }
 
 button.next-button {
   position: absolute;
-  bottom: -40px;
+  bottom: -50px;
   right: 0;
 }
 
