@@ -1,5 +1,5 @@
-import { useState } from 'react';
 import '../styles/form-style.css';
+import PropTypes from 'prop-types';
 
 function Form({
   handleEducationSubmit,
@@ -52,6 +52,23 @@ function Form({
     </div>
   );
 }
+
+Form.propTypes = {
+  handleEducationSubmit: PropTypes.func,
+  handleExperienceSubmit: PropTypes.func,
+  formIndex: PropTypes.number,
+  setFormIndex: PropTypes.func,
+  person: PropTypes.object,
+  experience: PropTypes.object,
+  setExperience: PropTypes.func,
+  education: PropTypes.object,
+  setEducation: PropTypes.func,
+  onName: PropTypes.func,
+  onEmail: PropTypes.func,
+  onAddress: PropTypes.func,
+  onLinkedIn: PropTypes.func,
+  onGithub: PropTypes.func,
+};
 
 function BasicInformation({
   formIndex,
@@ -136,6 +153,17 @@ function BasicInformation({
   );
 }
 
+BasicInformation.propTypes = {
+  formIndex: PropTypes.number,
+  setFormIndex: PropTypes.func,
+  person: PropTypes.object,
+  onName: PropTypes.func,
+  onEmail: PropTypes.func,
+  onAddress: PropTypes.func,
+  onLinkedIn: PropTypes.func,
+  onGithub: PropTypes.func,
+};
+
 function Education({
   handleEducationSubmit,
   formIndex,
@@ -206,6 +234,14 @@ function Education({
     </div>
   );
 }
+
+Education.propTypes = {
+  handleEducationSubmit: PropTypes.func,
+  formIndex: PropTypes.number,
+  setFormIndex: PropTypes.func,
+  educations: PropTypes.object,
+  setEducation: PropTypes.func,
+};
 
 function Experience({
   handleExperienceSubmit,
@@ -304,5 +340,13 @@ function Experience({
     </div>
   );
 }
+
+Experience.propTypes = {
+  handleExperienceSubmit: PropTypes.func,
+  formIndex: PropTypes.number,
+  setFormIndex: PropTypes.func,
+  experiences: PropTypes.object,
+  setExperience: PropTypes.func,
+};
 
 export default Form;

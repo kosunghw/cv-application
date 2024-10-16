@@ -1,5 +1,5 @@
-import { useState } from 'react';
 import '../styles/resume-style.css';
+import PropTypes from 'prop-types';
 
 function Resume({ person, education, experience }) {
   // this function returns username when passed LinkedIn or GitHub link.
@@ -67,5 +67,11 @@ function Resume({ person, education, experience }) {
     </div>
   );
 }
+
+Resume.propTypes = {
+  person: PropTypes.object,
+  education: PropTypes.object,
+  experience: PropTypes.object,
+};
 
 export default Resume;
